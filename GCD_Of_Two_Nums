@@ -1,0 +1,64 @@
+/*  Brute
+#include<iostream>
+#include<algorithm>
+using namespace std;
+int findgcd(int a,int b){
+    for(int i=min(a,b);i>=0;i--){ //(9,15) //i = 3: Both 9 % 3 == 0 and 15 % 3 == 0, so 3 is returned as the GCD.
+        if(a%i==0 && b%i==0){
+            return i;
+        }
+    }
+    return 1;
+}
+int main(){
+    int a,b;
+    cin>>a>>b;
+    int gcd=findgcd(a,b);
+    cout<<"GCD of "<<a<<" and "<<b<<" is : "<<gcd;
+}
+*/
+
+
+/* optimal
+#include<iostream>
+#include<algorithm>
+using namespace std;
+int findgcd(int a,int b){
+    int gcd=1;
+    for(int i=1;i<min(a,b);i++){
+        if(a%i==0 && b%i==0){
+            gcd=i;
+        }
+    }
+    return gcd;
+}
+int main(){
+    int a,b;
+    cin>>a>>b;
+    int gcd=findgcd(a,b);
+    cout<<"GCD of "<<a<<" and "<<b<<" is : "<<gcd;
+}
+*/
+
+
+//better
+#include<iostream>
+#include<algorithm>
+using namespace std;
+int findgcd(int a,int b){
+    while(a>0 && b>0){
+        if(a>b){
+            a=a%b;
+        }
+        else{
+            b=b%a;
+        }
+    }
+     return (a==0) ? b:a;
+}
+int main(){
+    int a,b;
+    cin>>a>>b;
+    int gcd=findgcd(a,b);
+    cout<<"GCD of "<<a<<" and "<<b<<" is : "<<gcd;
+}
