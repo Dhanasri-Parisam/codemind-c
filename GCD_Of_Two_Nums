@@ -56,9 +56,14 @@ int findgcd(int a,int b){
     }
      return (a==0) ? b:a;
 }
+int lcm(int a,int b){
+    return (a*b)/findgcd(a,b);
+}
 int main(){
     int a,b;
     cin>>a>>b;
     int gcd=findgcd(a,b);
     cout<<"GCD of "<<a<<" and "<<b<<" is : "<<gcd;
+    int r= lcm(a,b);
+    cout<<r;
 }
